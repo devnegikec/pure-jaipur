@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { errorMiddleware } from '@packages/error-handler';
-
+import { errorMiddleware } from './appError/ErrorMiddleware'
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 6001;
