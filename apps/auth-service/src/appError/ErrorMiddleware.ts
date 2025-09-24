@@ -1,7 +1,7 @@
 import { AppError } from './AppError';
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
-export const errorMiddleware = (err: Error, req: Request, res: Response) => {
+export const errorMiddleware = (err: Error, req: Request, res: Response, next: NextFunction) => {
   if (err instanceof AppError) {
     console.error(`Error ${req.method} ${req.url} - ${err.message}`);
     return res.status(err.statusCode).json({
@@ -17,5 +17,4 @@ export const errorMiddleware = (err: Error, req: Request, res: Response) => {
     status: 'error',
     error: 'Something went wrong went wrong! Please try again.',
   });
-
-}
+};

@@ -1,10 +1,9 @@
-const { NxAppWebpackPlugin } = require('@nrwl/react/plugins/webpack');
-const { output } = require('@nx/workspace');
+const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
 const { join } = require('path');
 
 module.exports = {
   output: {
-    path: join(output.root, 'dist/apps/auth-service'),
+    path: join(__dirname, 'dist'),
   },
   plugins: [
     new NxAppWebpackPlugin({

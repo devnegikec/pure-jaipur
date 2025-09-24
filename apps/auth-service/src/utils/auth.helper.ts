@@ -50,7 +50,7 @@ export const trackOtpRequest = async (email: string, next: NextFunction) => {
   await redis.set(otpRequestKey, (otpRequests + 1).toString(), 'EX', 3600); // Reset counter every hour
 };
 
-export const sendOtp = async (email: string, name: string, template: string) => {
+export const sendOtp = async (name: string, email: string, template: string) => {
   const otp = crypto.randomInt(100000, 999999).toString();
   await sendEmail(email, 'Verify Your Email', template, { name, otp });
   await redis.set(`otp:${email}`, otp, 'EX', 300); // OTP valid for 5 minutes
